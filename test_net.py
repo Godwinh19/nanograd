@@ -1,8 +1,3 @@
-# nanograd
-Nanograd: Lightweight automatic differentiation library for Python. Optimize, backpropagate with ease.
-
-## Example
-```python
 from nanograd.nn import MLP
 
 net = MLP(4, [4, 3, 1])  # A MLP of 4-dim inputs and a total of
@@ -33,14 +28,3 @@ for e in range(50):
         p.data += - lr * p.grad
 
     if e % 5 == 0: print("Epoch ", e, loss.data)
-
-```
-
-## Contributions
-
-Your contributions are very welcome !
-
-You can also check out [gotorch](https://github.com/Godwinh19/gotorch) a neural net env
-that I'm writing using Golang.
-
-Your can reach me on [twitter](https://twitter.com/GodwinHoudji) or [linkedin](https://www.linkedin.com/in/godwin-houdji) ☕
