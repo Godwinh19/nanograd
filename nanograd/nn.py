@@ -1,7 +1,6 @@
 import random
 from nanograd.tensor import Scalar
 
-
 class Module:
     """Parent class @ as pytorch's nn.Module """
 
@@ -10,18 +9,22 @@ class Module:
             p.grad = 0.0
 
     def parameters(self):
-        return []
+        raise NotImplementedError
 
 
 class Neuron(Module):
     def __init__(self, n_input):
         self.w = [Scalar(random.uniform(-1, 1)) for _ in range(n_input)]
-        self.b = Scalar(0)
+        self.b = Scalar(0.0)
+        self.activation = "relu"
 
     def __call__(self, x):
         # performs w*x + b
         a = sum((wi * xi for wi, xi in zip(self.w, x)), self.b)
-        out = a.tanh()  # make this dynamical
+        if self.activation == "relu":
+            out = a.relu()
+        else:
+            out = a.tanh()  # make this dynamical
         return out
 
     def parameters(self):
